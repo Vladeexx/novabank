@@ -1,39 +1,45 @@
-Observability
-What gets created:
+## Observability
 
-For each environment (dev and prod), the deployment creates:
+This project includes a basic observability setup to provide centralized logging,
+metrics, and application-level telemetry.
 
-A Log Analytics Workspace
+### What gets created
 
-An Application Insights instance linked to that workspace
+For each environment (**dev** and **prod**), the deployment creates:
 
-These resources provide centralized logging, metrics, and application-level telemetry.
+- A **Log Analytics Workspace**
+- An **Application Insights** instance linked to that workspace
 
-Where logs live
+These resources provide centralized logging, metrics, and application telemetry
+for the platform.
 
-All logs and metrics are stored in an Azure Log Analytics Workspace.
+---
 
-Application Insights sends telemetry (requests, dependencies, exceptions) to this workspace
+### Where logs live
 
-The workspace acts as the single source of truth for observability data
+- All logs and metrics are stored in an **Azure Log Analytics Workspace**
+- **Application Insights** sends telemetry such as:
+  - HTTP requests
+  - Dependencies
+  - Exceptions
 
-Log retention
+The workspace acts as the **single source of truth** for observability data.
 
-Log retention is configured to 365 days
+---
 
-This supports troubleshooting, auditing, and historical analysis
+### Log retention
 
-Retention can be adjusted later based on cost or compliance requirements
+- Log retention is configured to **365 days**
+- This supports:
+  - Troubleshooting
+  - Auditing
+  - Historical analysis
 
-Access & security
+Retention can be adjusted later based on **cost** or **compliance requirements**.
 
-Access to Log Analytics and Application Insights is controlled via Azure RBAC
+---
 
-Currently, access is restricted at the resource level
+### Access control
 
-RBAC will be tightened further in later phases to follow least-privilege principles
-
-in short:
-
-Observability is implemented using Azure-native services, providing centralized logging and application insights with defined retention and RBAC-based access control.
-
+- Access to observability resources is currently controlled via **Azure RBAC**
+- Permissions will be **tightened further** as the platform matures
