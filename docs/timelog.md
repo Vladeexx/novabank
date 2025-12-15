@@ -7,4 +7,13 @@ Day 1 – Initial cloud direction & IaC baseline
 
 Total: 4.0h
 
+------------------------------------------------
 
+Day 2 – Observability & security foundation
+
+• IaC extension for centralised observability (Application Insights, workspace-based) – 1.0h  
+• Secure secrets management design & implementation (Azure Key Vault, RBAC) – 1.0h  
+• Environment separation validation (dev/prod deployments and verification) – 1.0h  
+• Documentation updates and demo preparation – 1.0h  
+
+Total: 4.0h
