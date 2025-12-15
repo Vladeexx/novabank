@@ -53,3 +53,33 @@ Retention can be adjusted later based on **cost** or **compliance requirements**
 
 All resources are deployed using Bicep and Azure CLI.
 
+## Pre-deployment validation (what-if)
+
+az deployment group what-if \
+  --resource-group rg-novabank-dev-weu \
+  --template-file iac/main.bicep \
+  --parameters iac/dev.bicepparam
+
+## Deployment execution (script)
+
+./deploy.sh dev
+./deploy.sh prod
+
+
+## Deployment validation
+
+The deployment approach was validated in multiple steps:
+
+1. **Pre-deployment preview**  
+   Azure Resource Manager `what-if` was used to validate the template and preview changes before deployment, ensuring no unintended modifications.
+
+2. **Scripted deployment execution**  
+   The infrastructure was deployed using a Bash script that wraps the Azure CLI. The same script was executed for both dev and prod environments.
+
+3. **Post-deployment verification**  
+   Deployed resources were verified using Azure CLI commands and the Azure Portal to confirm correct resource creation, naming, and environment separation.
+
+4. **Idempotency check**  
+   The deployment script was re-run against the same environment to confirm idempotent behavior (no duplicate resources and no unintended changes).
+
+

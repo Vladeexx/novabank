@@ -3,15 +3,14 @@ set -euo pipefail
 
 # ------------------------------------------------------------
 # Choose environment:
-# - If argument is passed: ./deploy.sh dev | ./deploy.sh prod
+# - If argument is passed: ./what-if.sh dev | ./what-if.sh prod
 # - If not passed, user is prompted interactively
 # ------------------------------------------------------------
 
 ENV="${1:-}"
 
-# Ask interactively if ENV not provided
 if [[ -z "$ENV" ]]; then
-  echo "Select environment to deploy:"
+  echo "Select environment for WHAT-IF preview:"
   select choice in "dev" "prod"; do
     case "$choice" in
       dev) ENV="dev"; break ;;
@@ -30,21 +29,15 @@ fi
 # ------------------------------------------------------------
 # Configuration
 # ------------------------------------------------------------
-
-# Default Azure region (override if needed)
 LOCATION="${LOCATION:-westeurope}"
 
-# Resource naming
 RG="rg-novabank-${ENV}-weu"
-DEPLOYMENT_NAME="nb-${ENV}-observability"
-
 TEMPLATE_FILE="iac/main.bicep"
 PARAM_FILE="iac/${ENV}.bicepparam"
 
 # ------------------------------------------------------------
 # Pre-flight checks
 # ------------------------------------------------------------
-
 if [[ ! -f "$TEMPLATE_FILE" ]]; then
   echo "ERROR: Missing template file: $TEMPLATE_FILE"
   exit 1
@@ -56,31 +49,20 @@ if [[ ! -f "$PARAM_FILE" ]]; then
 fi
 
 echo "------------------------------------------------------------"
-echo "Deploying NovaBank infrastructure"
-echo "Environment      : $ENV"
-echo "Location         : $LOCATION"
-echo "Resource Group   : $RG"
-echo "Deployment Name  : $DEPLOYMENT_NAME"
+echo "WHAT-IF preview for NovaBank infrastructure"
+echo "Environment    : $ENV"
+echo "Resource Group : $RG"
 echo "------------------------------------------------------------"
 
 # ------------------------------------------------------------
-# Ensure resource group exists (idempotent)
+# WHAT-IF preview (no changes applied)
 # ------------------------------------------------------------
-az group create \
-  --name "$RG" \
-  --location "$LOCATION" \
-  --output none
-
-# ------------------------------------------------------------
-# Deploy Bicep template at Resource Group scope
-# ------------------------------------------------------------
-az deployment group create \
+az deployment group what-if \
   --resource-group "$RG" \
-  --name "$DEPLOYMENT_NAME" \
   --template-file "$TEMPLATE_FILE" \
   --parameters "$PARAM_FILE" \
-  --output table
+  --result-format ResourceIdOnly
 
 echo "------------------------------------------------------------"
-echo "Deployment completed successfully"
+echo "WHAT-IF preview completed (no changes were applied)"
 echo "------------------------------------------------------------"
