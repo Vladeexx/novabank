@@ -43,3 +43,13 @@ Retention can be adjusted later based on **cost** or **compliance requirements**
 
 - Access to observability resources is currently controlled via **Azure RBAC**
 - Permissions will be **tightened further** as the platform matures
+
+## What is deployed so far
+
+- Log Analytics workspace (dev & prod)
+- Application Insights (workspace-based)
+- Azure Key Vault with RBAC
+- Example secret stored per environment
+
+All resources are deployed using Bicep and Azure CLI.
+
