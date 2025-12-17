@@ -17,3 +17,14 @@ Day 2 – Observability & security foundation
 • Documentation updates and demo preparation – 1.0h  
 
 Total: 4.0h
+
+-------------------------------------------------
+
+Day 3 – Data layer implementation (PostgreSQL)
+
+• PostgreSQL Flexible Server design & IaC implementation (module + parameters) – 1.0h
+• Secrets handling approach (Key Vault storage + secure parameter injection) – 1.0h
+• Dev deployment, validation & troubleshooting (schema/param fixes) – 1.0h
+• Prod deployment & verification + documentation updates – 1.0h
+
+Total: 4.0h

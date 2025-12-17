@@ -82,4 +82,18 @@ The deployment approach was validated in multiple steps:
 4. **Idempotency check**  
    The deployment script was re-run against the same environment to confirm idempotent behavior (no duplicate resources and no unintended changes).
 
+   ## What is deployed so far
+- Log Analytics workspace (dev & prod)
+- Application Insights (workspace-based)
+- Key Vault (RBAC) (dev & prod)
+- PostgreSQL Flexible Server (dev & prod)
+
+## Deploy Postgres (prod)
+Fetch password from Key Vault and inject as secure parameter:
+```bash
+PG_PASS=$(az keyvault secret show --vault-name kv-novabank-prod --name DbAdminPassword --query value -o tsv)
+az deployment group create --resource-group rg-novabank-prod-weu --template-file iac/main.bicep --parameters iac/prod.bicepparam --parameters pgAdminPassword="$PG_PASS" --name nb-prod-postgres
+unset PG_PASS
+
+
 
