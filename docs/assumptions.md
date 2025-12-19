@@ -13,3 +13,12 @@
 - HA not enabled for PoC; would be considered to meet availability targets.
 
 - Backup retention set to 7 days for PoC; production may require longer retention depending on policy.
+
+
+------------
+
+- The PoC focuses on infrastructure patterns rather than full application functionality.
+- Public access is temporarily enabled for PostgreSQL to reduce complexity in the first phase.
+- High availability and private networking are deferred to a later phase.
+- Small SKUs are intentionally selected to keep costs low during validation.
+- Secrets are injected at deployment time rather than retrieved in-template due to ARM limitations.

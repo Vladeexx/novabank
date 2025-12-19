@@ -28,3 +28,15 @@ Day 3 – Data layer implementation (PostgreSQL)
 • Prod deployment & verification + documentation updates – 1.0h
 
 Total: 4.0h
+
+-------------------------------------------------
+
+Day 4 – Application layer & integration
+
+• App Service Plan & Web App module implementation – 1.0h  
+• Dev and prod deployments and validation – 1.0h  
+• Secure configuration of app settings (App Insights, DB pattern) – 1.0h  
+• Documentation updates and demo preparation – 1.0h  
+
+Total: 4.0h
+

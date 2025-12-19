@@ -65,6 +65,16 @@ az deployment group what-if \
 ./deploy.sh dev
 ./deploy.sh prod
 
+The script:
+
+Ensures the resource group exists
+
+Fetches secrets securely from Key Vault
+
+Injects secrets as secure parameters
+
+Deploys infrastructure using Bicep
+
 
 ## Deployment validation
 
@@ -82,7 +92,8 @@ The deployment approach was validated in multiple steps:
 4. **Idempotency check**  
    The deployment script was re-run against the same environment to confirm idempotent behavior (no duplicate resources and no unintended changes).
 
-   ## What is deployed so far
+## What is deployed so far
+
 - Log Analytics workspace (dev & prod)
 - Application Insights (workspace-based)
 - Key Vault (RBAC) (dev & prod)
@@ -96,4 +107,28 @@ az deployment group create --resource-group rg-novabank-prod-weu --template-file
 unset PG_PASS
 
 
+## What Is Deployed
+
+Log Analytics Workspace (dev & prod)
+
+Application Insights (workspace-based)
+
+Azure Key Vault (RBAC-enabled)
+
+PostgreSQL Flexible Server (dev & prod)
+
+App Service Plan + Web App (dev & prod)
+
+
+---------------------------------------
+
+Verification:
+
+Check Web App hostname:
+
+az webapp show -g rg-novabank-dev-weu -n app-novabank-dev --query defaultHostName -o tsv
+
+Check app settings:
+
+az webapp config appsettings list -g rg-novabank-dev-weu -n app-novabank-dev
 
