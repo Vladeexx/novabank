@@ -1,0 +1,1 @@
+I used ChatGPT to guide and structure the solution step-by-step, similar to working with a senior colleague, and Gemini to cross-check assumptions and challenge decisions. AI helped me move faster, but I stayed in control of the design, scope, and implementation.
