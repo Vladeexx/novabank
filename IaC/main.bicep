@@ -2,6 +2,7 @@ param location string = resourceGroup().location
 param env string
 param appName string
 param kvSku string = 'standard'
+param appSkuName string = 'B1'
 
 // Postgres settings
 param pgAdminUser string = 'pgadmin'
@@ -79,6 +80,30 @@ module postgres 'modules/postgres.bicep' = {
     adminPassword: pgAdminPassword
   }
 }
+
+// ---------------------------
+//           Web-App
+// ---------------------------
+
+module webapp 'modules/webapp.bicep' = {
+  name: 'webapp'
+  params: {
+    name: 'app-${appName}-${env}'
+    planName: 'plan-${appName}-${env}'
+    location: location
+    tags: tags
+    skuName: appSkuName
+    appInsightsConnectionString: appi.properties.ConnectionString
+
+    // Postgres info
+    pgHost: postgres.outputs.fqdn
+    pgUser: pgAdminUser
+    pgPassword: pgAdminPassword
+  }
+}
+
+output webAppHostName string = webapp.outputs.defaultHostName
+
 
 // ---------------------------
 // Outputs
