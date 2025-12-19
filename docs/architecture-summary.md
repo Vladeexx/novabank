@@ -48,3 +48,49 @@ Note the important limitation + workaround:
 Public connectivity used for PoC; firewall rule allows Azure services.
 
 “Next step: private endpoints + disable public access.”
+
+# Application layer:
+
+
+The application layer is hosted on Azure App Service (Linux) and deployed consistently across dev and prod environments using Infrastructure as Code.
+
+App Service Plan + Web App deployed per environment.
+
+Web App runtime configured as Node.js 18 (Linux) for the PoC.
+
+HTTPS enforced by default.
+
+Environment separation achieved via naming conventions and parameter files.
+
+The Web App is configured with application settings that demonstrate:
+
+Centralised observability via Application Insights
+
+Database connectivity pattern via environment variables (no hardcoded secrets)
+
+
+
+# High-Level Request Flow
+
+1)User accesses the Web App via HTTPS.
+
+2)Web App processes the request.
+
+3)Application telemetry is sent to Application Insights.
+
+4)Logs are stored centrally in Log Analytics.
+
+5)(Future) Web App connects to PostgreSQL using injected connection settings.
+
+
+# Alignment with CloudNation 6D Model
+
+This first step aligns primarily with:
+
+Discover & Define – understanding constraints, risks, and baseline requirements.
+
+Design – selecting simple, defensible Azure services.
+
+Deliver – repeatable deployments via IaC.
+
+Reference: CloudNation 6D Model
