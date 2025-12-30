@@ -40,3 +40,8 @@ Day 4 – Application layer & integration
 
 Total: 4.0h
 
+--------------------------------------------------
+
+Day 5  
+
+Management summary & architecture documentation — 3.0 h
