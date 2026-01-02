@@ -37,3 +37,22 @@ Git repository cleanup and push issue resolution
 Work was required to unblock repository submission
 
 --------------------------------------
+
+## Time log – Terraform refactor to CloudNation modules
+
+**Duration:** 2 hours  
+
+### Activity
+Aligning Terraform deployment with CloudNation Well-Architected Modules standards
+
+### Description
+- Reviewed CloudNation Well-Architected Modules documentation and Terraform resource modules  
+- Refactored Resource Group deployment to use the CloudNation RG Terraform module  
+- Updated provider versions and subscription configuration to align with module requirements  
+- Added standardized tagging and environment-specific parameters  
+- Validated deployment via Terraform plan for dev environment  
+
+### Notes
+Work focused on aligning the Infrastructure as Code approach with CloudNation standards while keeping the existing pattern module structure intact.
+
+-----------------------------
