@@ -3,5 +3,12 @@ module "stack" {
 
   project  = "novabank"
   env      = "dev"
-  location = "West Europe"
+  location = "westeurope"
+
+  tags = {
+    Environment = "dev"
+    Workload    = "novabank"
+    ManagedBy   = "Terraform"
+    Owner       = "Vlad"
+  }
 }
