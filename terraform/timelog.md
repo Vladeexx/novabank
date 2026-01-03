@@ -56,3 +56,21 @@ Aligning Terraform deployment with CloudNation Well-Architected Modules standard
 Work focused on aligning the Infrastructure as Code approach with CloudNation standards while keeping the existing pattern module structure intact.
 
 -----------------------------
+
+## Time log – Terraform logging foundation (CloudNation WAM)
+
+**Date:** 2026-01-03  
+**Duration:** 4 hours  
+
+### Activity
+Implementing centralized logging using CloudNation Terraform modules
+
+### Description
+- Deployed Log Analytics Workspace for dev and prod using CloudNation WAM resource module  
+- Integrated LAW into existing pattern module (`novabank_stack`)  
+- Configured environment-specific retention (dev: 30 days, prod: 365 days)  
+- Resolved Terraform version compatibility and module validation issues  
+- Verified resources and tagging in Azure Portal  
+
+### Outcome
+Centralized logging foundation successfully established and aligned with CloudNation Well-Architected Modules standards.
