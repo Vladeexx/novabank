@@ -1,19 +1,3 @@
-# Terraform
-**/.terraform/*
-*.tfstate
-*.tfstate.*
-*.tfvars
-*.tfvars.json
-crash.log
-crash.*.log
-override.tf
-override.tf.json
-*_override.tf
-*_override.tf.json
-
-# Terraform plan files
-*.tfplan
-
 # -----------------------------------
 # Terraform
 # -----------------------------------
@@ -24,10 +8,8 @@ override.tf.json
 # Terraform state files
 *.tfstate
 *.tfstate.*
-
-# Crash logs
-crash.log
-crash.*.log
+terraform.tfstate
+terraform.tfstate.*
 
 # Variable files (may contain secrets)
 *.tfvars
@@ -39,14 +21,13 @@ override.tf.json
 *_override.tf
 *_override.tf.json
 
-# CLI config files
-.terraformrc
-terraform.rc
+# Crash logs
+crash.log
+crash.*.log
 
-# Plan output files
+# Terraform plan output
 *.tfplan
 
-# Terraform state
-terraform.tfstate
-terraform.tfstate.*
-
+# Terraform CLI config
+.terraformrc
+terraform.rc
