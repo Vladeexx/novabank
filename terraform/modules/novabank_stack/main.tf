@@ -50,6 +50,33 @@ module "appi" {
   }
 }
 
+/////////////////////////////////////// ## Key Vault
+
+data "azurerm_client_config" "current" {}
+
+module "kv" {
+  source  = "CloudNationHQ/kv/azure"
+  version = "4.3.0"
+
+  vault = {
+    name                = "kv-${var.project}-${var.env}-01"
+    location            = var.location
+    resource_group_name = "rg-${var.project}-${var.env}"
+    tenant_id           = data.azurerm_client_config.current.tenant_id
+
+    enable_rbac_authorization = true
+
+    admins = [
+      data.azurerm_client_config.current.object_id
+    ]
+
+    tags = var.tags
+  }
+}
+
+
+
+
 
 
 

@@ -91,3 +91,20 @@ Deploying Application Insights using CloudNation Terraform module
 - Exposed Application Insights outputs for future App Service integration  
 - Deployed and verified Application Insights for dev and prod environments  
 
+
+
+## Time log – Key Vault deployment (CloudNation WAM)
+
+**Duration:** 2 hours  
+
+### Activity
+Deploying Azure Key Vault using CloudNation Terraform module
+
+### Description
+- Integrated CloudNation Key Vault module into pattern module  
+- Enabled RBAC-based access control and admin assignment  
+- Aligned Key Vault with existing resource group and naming conventions  
+- Resolved soft-delete recovery issue during deployment  
+- Deployed and verified Key Vault for dev environment  
+
+
