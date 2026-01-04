@@ -74,3 +74,20 @@ Implementing centralized logging using CloudNation Terraform modules
 
 ### Outcome
 Centralized logging foundation successfully established and aligned with CloudNation Well-Architected Modules standards.
+
+
+
+## Time log – Application Insights deployment (CloudNation WAM)
+
+**Date:** 2026-01-04  
+**Duration:** 2 hours  
+
+### Activity
+Deploying Application Insights using CloudNation Terraform module
+
+### Description
+- Integrated CloudNation Application Insights resource module into pattern module  
+- Configured workspace-based Application Insights connected to Log Analytics Workspace  
+- Exposed Application Insights outputs for future App Service integration  
+- Deployed and verified Application Insights for dev and prod environments  
+
