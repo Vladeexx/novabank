@@ -30,4 +30,26 @@ module "law" {
 }
 
 
+//////////////////////////////////////// ###   Application Insights
+
+module "appi" {
+  source  = "CloudNationHQ/appi/azure"
+  version = "3.0.1"
+
+  config = {
+    name                = "appi-${var.project}-${var.env}"
+    location            = var.location
+    resource_group_name = "rg-${var.project}-${var.env}"
+
+    application_type = "web"
+
+    # workspace-based mode:
+    workspace_id = module.law.workspace.id
+
+    tags = var.tags
+  }
+}
+
+
+
 
