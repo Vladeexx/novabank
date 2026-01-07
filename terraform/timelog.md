@@ -19,7 +19,11 @@ Initial Terraform setup and Azure infrastructure foundation (dev & prod)
 ### Notes
 Time includes initial learning curve, environment setup, troubleshooting provider registration behavior, and validating a clean, repeatable IaC foundation before continuing with additional infrastructure components.
 
+
+
 ------------------------------------
+
+
 
 **Duration:** 1 hour  
 
@@ -36,7 +40,11 @@ Git repository cleanup and push issue resolution
 ### Notes
 Work was required to unblock repository submission
 
+
+
 --------------------------------------
+
+
 
 ## Time log – Terraform refactor to CloudNation modules
 
@@ -55,7 +63,11 @@ Aligning Terraform deployment with CloudNation Well-Architected Modules standard
 ### Notes
 Work focused on aligning the Infrastructure as Code approach with CloudNation standards while keeping the existing pattern module structure intact.
 
+
+
 -----------------------------
+
+
 
 ## Time log – Terraform logging foundation (CloudNation WAM)
 
@@ -74,6 +86,12 @@ Implementing centralized logging using CloudNation Terraform modules
 
 ### Outcome
 Centralized logging foundation successfully established and aligned with CloudNation Well-Architected Modules standards.
+
+
+
+
+-------------------------------------------------
+
 
 
 
@@ -108,3 +126,21 @@ Deploying Azure Key Vault using CloudNation Terraform module
 - Deployed and verified Key Vault for dev environment  
 
 
+
+--------------------------------------------
+
+
+
+## Time log – App Service Plan deployment
+
+**Date:** 2026-01-07  
+**Duration:** 1 hour  
+
+### Activity
+Deploying App Service Plan using CloudNation Terraform module
+
+### Description
+- Integrated CloudNation App Service Plan module into reusable stack  
+- Configured Linux based plan with B1 SKU for dev and prod hosting  
+- Aligned plan to existing resource group structure and tags  
+- Exposed plan ID outputs for upcoming App Service deployment

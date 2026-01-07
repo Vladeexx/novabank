@@ -64,7 +64,7 @@ module "kv" {
     resource_group_name = "rg-${var.project}-${var.env}"
     tenant_id           = data.azurerm_client_config.current.tenant_id
 
-    enable_rbac_authorization = true
+    rbac_authorization_enabled = true
 
     admins = [
       data.azurerm_client_config.current.object_id
@@ -74,7 +74,26 @@ module "kv" {
   }
 }
 
+///////////////////////////////////////////// App Service Plan
 
+module "plan" {
+  source  = "CloudNationHQ/plan/azure"
+  version = "3.0.0"
+
+  plans = {
+    app = {
+      name                = "plan-${var.project}-${var.env}"
+      os_type             = "Linux"
+      sku_name            = "B1"
+      resource_group_name = "rg-${var.project}-${var.env}"
+      location            = var.location
+      tags                = var.tags
+    }
+  }
+}
+
+
+/////////////////////////////////////////////
 
 
 

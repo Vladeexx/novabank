@@ -19,3 +19,8 @@ output "application_insights_connection_string" {
   sensitive = true
 }
 
+output "app_service_plan_id" {
+  value = module.plan.plans.app.id
+}
+
+
