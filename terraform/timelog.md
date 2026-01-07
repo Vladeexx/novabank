@@ -161,3 +161,22 @@ Deploying App Service using CloudNation Terraform module
 - Wired application platform to Application Insights for monitoring  
 - Configured core app settings and TLS compliance (1.2, HTTPS)  
 - Deployed and validated Web App for dev and prod environments via Terraform plan/apply
+
+----------->
+
+## Time log – App Service → Key Vault security setup
+
+**Duration:** 2 hours  
+
+### Activity
+Configuring access from the NovaBank Web App to Azure Key Vault
+
+### What happened
+I initially attempted to use the CloudNationHQ/rbac/azure module to create the role assignment. The idea was good: keep everything standardized through CloudNation modules. However, that module relies on **dynamic lookups** of built-in Azure roles using the Authorization and Entra ID APIs. In my environment those lookup steps became stuck, which prevented Terraform from finishing even the *plan* phase.
+
+### How I fixed it
+Instead of fighting the module internals, I chose a pragmatic path. I used the **native AzureRM Terraform resource `azurerm_role_assignment`** and passed the verified role definition ID for *Key Vault Secrets User* that I retrieved once with Azure CLI. This allowed Terraform to create the assignment directly and quickly, while still keeping the solution fully auditable and managed as part of our own IaC pattern.
+
+### Result
+The Web App’s **system-assigned managed identity** now has permission to *list and read* secrets from Key Vault. The application can consume sensitive settings without any hardcoded passwords, and the platform is ready for the next component — deploying the PostgreSQL database and wiring it to the app through Key Vault references.  
+

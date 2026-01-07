@@ -23,4 +23,18 @@ output "app_service_plan_id" {
   value = module.plan.plans.app.id
 }
 
+output "key_vault_id" {
+  value = data.azurerm_key_vault.kv.id
+}
+
+output "app_identity_principal_id" {
+  value = data.azurerm_linux_web_app.app.identity[0].principal_id
+}
+
+output "app_service_id" {
+  value = data.azurerm_linux_web_app.app.id
+}
+
+
+
 

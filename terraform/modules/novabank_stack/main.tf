@@ -132,4 +132,33 @@ module "app" {
 }
 
 
+///////////////////////////////////////////// Data block
+
+
+data "azurerm_key_vault" "kv" {
+  name                = "kv-${var.project}-${var.env}-01"
+  resource_group_name = "rg-${var.project}-${var.env}"
+  depends_on          = [module.kv]
+}
+
+data "azurerm_linux_web_app" "app" {
+  name                = "app-${var.project}-${var.env}"
+  resource_group_name = "rg-${var.project}-${var.env}"
+  depends_on          = [module.app]
+}
+
+
+/////////////////////////////////////////////  RBAC
+
+
+resource "azurerm_role_assignment" "app_to_kv_secrets_user" {
+  scope              = data.azurerm_key_vault.kv.id
+  role_definition_id = "/subscriptions/4f8cfe93-e6dd-4f13-a6bd-311131073c9a/providers/Microsoft.Authorization/roleDefinitions/4633458b-17de-408a-b874-0445c86b69e6"
+  principal_id       = data.azurerm_linux_web_app.app.identity[0].principal_id
+}
+
+
+
+
+
 
