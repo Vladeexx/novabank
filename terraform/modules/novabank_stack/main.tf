@@ -93,9 +93,43 @@ module "plan" {
 }
 
 
-/////////////////////////////////////////////
+///////////////////////////////////////////// App Service
 
 
+module "app" {
+  source  = "CloudNationHQ/app/azure"
+  version = "5.0.0"
+
+  instance = {
+    name                = "app-${var.project}-${var.env}"
+    type                = "linux"
+    location            = var.location
+    resource_group_name = "rg-${var.project}-${var.env}"
+
+    service_plan_id = module.plan.plans.app.id
+
+    identity = {
+      type = "SystemAssigned"
+    }
+
+    app_settings = {
+      # App Insights
+      "APPLICATIONINSIGHTS_CONNECTION_STRING" = module.appi.config.connection_string
+    }
+
+    site_config = {
+      always_on            = true
+      ftps_state           = "Disabled"
+      minimum_tls_version  = "1.2"
+
+      application_stack = {
+        node_version = "20-lts"
+      }
+    }
+
+    tags = var.tags
+  }
+}
 
 
 

@@ -144,3 +144,20 @@ Deploying App Service Plan using CloudNation Terraform module
 - Configured Linux based plan with B1 SKU for dev and prod hosting  
 - Aligned plan to existing resource group structure and tags  
 - Exposed plan ID outputs for upcoming App Service deployment
+
+--->
+
+## Time log – App Service deployment (CloudNation WAM)
+
+**Duration:** 2 hours  
+
+### Activity
+Deploying App Service using CloudNation Terraform module
+
+### Description
+- Integrated CloudNation App Service module into existing stack  
+- Configured Linux Web App connected to App Service Plan compute layer  
+- Enabled System Assigned Managed Identity for passwordless security baseline  
+- Wired application platform to Application Insights for monitoring  
+- Configured core app settings and TLS compliance (1.2, HTTPS)  
+- Deployed and validated Web App for dev and prod environments via Terraform plan/apply
