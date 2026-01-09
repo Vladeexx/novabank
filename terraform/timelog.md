@@ -223,7 +223,8 @@ The Web App can retrieve database configuration securely at runtime without hard
 
 ---------------------------
 
-Over the weekend, I’ll casually check a few YouTube videos about Terraform mechanics. Realistically, you guys owe me two days of vacation 🙂  + 3h
+
+Over the weekend, I’ll casually check a few YouTube videos (around 3 hours) about Terraform. Realistically, you guys owe me two days of vacation 🙂
 
 ## Terraform deployment 
    Total 32h 
