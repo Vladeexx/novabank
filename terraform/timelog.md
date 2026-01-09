@@ -219,3 +219,8 @@ Advanced high-availability and geo-redundant backup configuration
 
 The NovaBank application stack now includes a functional PostgreSQL backend and a secure secret delivery mechanism using Azure Key Vault.
 The Web App can retrieve database configuration securely at runtime without hardcoded credentials, and both dev and prod environments are fully deployed, auditable, and ready for further application work or future security hardening.
+
+
+---------------------------
+
+Over the weekend, I’ll casually check a few YouTube videos about Terraform mechanics. Realistically, you guys owe me two days of vacation 🙂  + 3h
