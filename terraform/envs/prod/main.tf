@@ -13,4 +13,13 @@ module "stack" {
     ManagedBy   = "Terraform"
     Owner       = "Vlad"
   }
+
+  psql_admin_login    = "psqladmin"
+  psql_admin_password = var.psql_admin_password
+
+}
+
+  output "psql_fqdn" {
+  description = "PostgreSQL Flexible Server FQDN"
+  value       = module.stack.psql_fqdn
 }

@@ -35,6 +35,11 @@ output "app_service_id" {
   value = data.azurerm_linux_web_app.app.id
 }
 
+output "psql_fqdn" {
+  description = "PostgreSQL server FQDN"
+  value       = module.psql.server.fqdn
+}
+
 
 
 

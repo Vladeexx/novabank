@@ -180,3 +180,42 @@ Instead of fighting the module internals, I chose a pragmatic path. I used the *
 ### Result
 The Web App’s **system-assigned managed identity** now has permission to *list and read* secrets from Key Vault. The application can consume sensitive settings without any hardcoded passwords, and the platform is ready for the next component — deploying the PostgreSQL database and wiring it to the app through Key Vault references.  
 
+
+------------------------------------------
+
+Time log – PostgreSQL, Key Vault secrets & application connectivity (PoC)
+
+Date: 2026-01-08
+Duration: 6 hours
+
+## Activity
+
+Deploying PostgreSQL Flexible Server and wiring secure application connectivity via Azure Key Vault
+
+## Description
+
+- Integrated CloudNation PostgreSQL Flexible Server Terraform module into the reusable NovaBank stack
+- Deployed PostgreSQL Flexible Server (v16) with a dedicated application database for dev and prod environments
+- Configured baseline storage, backup retention, and TLS-secured connections aligned with platform standards
+- Key Vault & secrets integration
+- Prepared Key Vault for application configuration by defining database-related secrets (host, name, user, password)
+- Configured the Web App to reference database settings using Key Vault references in App Service configuration
+- Validated that secrets are resolved at runtime via the Web App’s system-assigned managed identity, without hardcoding secret values in Terraform code.
+- Ensured Terraform manages references and permissions, while secret values remain external and replaceable
+
+## Connectivity & security decisions
+
+- Enabled public network access on PostgreSQL intentionally for PoC allowing Azure platform traffic only (Azure services rule)
+- Verified that the database is not accessible from arbitrary public IP addresses
+- Avoided early complexity such as VNet integration or private endpoints, keeping a clear Phase-2 hardening path
+
+## What was intentionally deferred
+
+Restricting PostgreSQL access to App Service outbound IPs
+Private Endpoint and VNet-based database connectivity
+Advanced high-availability and geo-redundant backup configuration
+
+# Result
+
+The NovaBank application stack now includes a functional PostgreSQL backend and a secure secret delivery mechanism using Azure Key Vault.
+The Web App can retrieve database configuration securely at runtime without hardcoded credentials, and both dev and prod environments are fully deployed, auditable, and ready for further application work or future security hardening.
