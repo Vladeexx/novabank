@@ -185,7 +185,7 @@ The Web App’s **system-assigned managed identity** now has permission to *list
 
 Time log – PostgreSQL, Key Vault secrets & application connectivity (PoC)
 
-Date: 2026-01-08
+Date: 2026-01-09
 Duration: 6 hours
 
 ## Activity
